@@ -278,20 +278,13 @@ def sanitizar_dato(heroe:dict, clave:str, tipo_dato:str)->bool:
     
     return salio_bien
         
-# """
-# 3.5. Crear la función 'stark_normalizar_datos’ la cual recibirá como parámetros:
-# ● lista_heroes: la listas personajes
-# La función deberá recorrer la lista de héroes y sanitizar los valores solo de las
-# siguientes claves: ‘altura’, ‘peso’, ‘color_ojos’, ‘color_pelo’, ‘fuerza’ e
-# ‘inteligencia’
-# ● Un vez finalizado el proceso mostrar el mensaje ‘Datos normalizados’,
-# ● Validar que la lista de héroes no esté vacía para realizar sus acciones,
-# caso contrario imprimirá el mensaje: “Error: Lista de héroes vacía”
-# ● La función no retorna nada
-# ● Reutilizar la función sanitizar_dato
-# """
+def stark_normalizar_datos(lista_heroes:list) -> None:
+    """
+    Recorre la lista de heroes, validando y casteando los datos, de las siguientes claves: "altura", "peso", "color_ojos", "color_pelo", "fuerza", e "inteligencia". Al finalizar mostrara un mensaje "Datos normalizados"
 
-def stark_normalizar_datos(lista_heroes:list):
+    Args:
+        lista_heroes (list): La lista de diccionarios de los heroes
+    """
     if len(lista_heroes) > 0:
         altura_normalizada = False
         peso_normalizado = False
@@ -324,22 +317,16 @@ def stark_normalizar_datos(lista_heroes:list):
     else:
         print("Error: Lista de héroes vacía")
 
-# """ 
-# 4.1. Crear la función ‘generar_indice_nombres’ la cual recibirá como parámetro:
-# ● lista_heroes: la lista de personajes
-# La función deberá iterar la lista de personajes y generar una lista donde cada
-# elemento es cada palabra que componen el nombre de los personajes.
-# Por ejemplo la lista que se deberá retornar tiene la siguiente forma:
-# [‘Howard’, ‘the’, ‘Duck’, ‘Rocket’, ‘Raccoon’, ‘Wolverine’, … ]
-# La función deberá validar que:
-# ● La lista contenga al menos un elemento
-# ● Todos los elementos de lista_heroes sean del tipo diccionario
-# ● Todos los elementos contengan la clave ‘nombre’
-# En caso de encontrar algún error, informar por pantalla: ‘El origen de datos no
-# contiene el formato correcto’
-# """
 def generar_indice_nombres(lista_heroes:list)->list:
-    
+    """
+    Itera la lista y genera una lista nueva en donde cada elemento es una palabra que compone el nombre de los personajes
+    En caso de error, se informara en pantalla\n
+    Args:
+        lista_heroes (list): La lista de los diccionarios de los heroes
+
+    Returns:
+        list: La lista nueva con las palabras separadas 
+    """    """"""
     salio_bien = False
     
     if len(lista_heroes) > 0:
@@ -365,32 +352,28 @@ def generar_indice_nombres(lista_heroes:list)->list:
     else:
         print("El origen de datos no contiene el formato correcto")     
 
-# """ 
-# 4.2. Crear la función ‘stark_imprimir_indice_nombre’ la cual recibirá como
-# parámetro:
-# ● lista_heroes: la lista de personajes
-# La función deberá mostrar por pantalla el índice generado por la función
-# generar_indice_nombres con todos los nombres separados con un guión.
-# Por ejemplo:
-# Howard-the-duck-Rocket-Raccoon-Wolverine…
-# """
-
 def stark_imprimir_indice_nombre(lista_heroes:list):
+    """
+    Muestra en pantalla la lista de nombres separadas por un guion
+
+    Args:
+        lista_heroes (list): La lista de heroes
+    """    
     lista_nombres = generar_indice_nombres(lista_heroes)
     separador = "-"
     nombres_con_separador = separador.join(lista_nombres)
     print(nombres_con_separador)
         
+def convertir_cm_a_mtrs(valor_cm:str) -> float:
+    """
+    Valida que el numero recibido sea un flotante positivo
 
-# """ 
-# 5.1. Crear la función ‘convertir_cm_a_mtrs’ la cual recibirá como parámetro:
-# ● valor_cm: Un número que representa una medida en centímetros
-# La función deberá retornar el número recibido, pero convertido a la unidad
-# metros. La función deberá validar que el número recibido sea un número
-# flotante positivo, en caso de no serlo retornar -1
-# """
+    Args:
+        valor_cm (str): El string a validar
 
-def convertir_cm_a_mtrs(valor_cm:str):
+    Returns:
+        float: El string validado si es correcto. En caso contrario -1
+    """    
     try:
         valor_cm = float(valor_cm)
         if valor_cm < 0:
@@ -401,32 +384,18 @@ def convertir_cm_a_mtrs(valor_cm:str):
     except:
         return -1
 
-# """ 
-# 5.2. Crear la función ‘generar_separador’ la cual recibirá como parámetro
-# ● patron: un carácter que se utilizará como patrón para generar el
-# separador
-# ● largo: un número que representa la cantidad de caracteres que va
-# ocupar el separador.
-# ● imprimir: un parámetro opcional del tipo booleano (por default definir
-# en True)
-# La función deberá generar un string que contenga el patrón especificado
-# repitiendo tantas veces como la cantidad recibida como parámetro (uno junto
-# al otro, sin salto de línea)
-# Si el parámetro booleano recibido se encuentra en False se deberá solo
-# retornar el separador generado. Si se encuentra en True antes de retornarlo,
-# imprimirlo por pantalla
-# La función deberá validar:
-# ● Que el parámetro patrón tenga al menos un carácter y como máximo
-# dos
-# ● Que el parámetro largo sea un entero entre 1 y 235 inclusive
-# En caso de no verificarse las validaciones devolver ‘N/A’
-# Ejemplo de llamada:
-# generar_separador(‘*’, 10)
-# Ejemplo de salida:
-# **********
-# """
-
 def generar_separador(patron:str, largo:int, imprimir:bool = True)->str:
+    """
+    Genera un string que contenga el patrón especificado repitiendo tantas veces como la cantidad recibida por parámetro (uno junto al otro, sin salto de línea). Si el parámetro booleano recibido se encuentra en False se deberá solo retornar el separador generado. Si se encuentra en True antes de retornarlo, se mostrara por pantalla
+    
+    Args:
+        patron (str): Un carácter que se utilizará como patrón para generar el separador.\n
+        largo (int): Un número que representa la cantidad de caracteres que va ocupar el separador.\n
+        imprimir (bool, optional): Parametro opcional de tipo booleano. Por defecto en True.
+
+    Returns:
+        str: El separador generado
+    """    
     if (len(patron) >= 1 and len(patron) <= 2) and (largo >= 1 and largo <= 235):
         contador = 0
         separador = ""
@@ -440,19 +409,13 @@ def generar_separador(patron:str, largo:int, imprimir:bool = True)->str:
     else:
         return "N/A"
 
-# """ 
-# 5.3. Crear la función ‘generar_encabezado’ la cual recibirá como parámetro
-# ● titulo: un string que representa el título de una sección de la ficha
-# La función deberá devolver un string que contenga el título envuelto entre dos
-# separadores (estimar el largo requerido para tu pantalla).
-# Ejemplo de salida:
-# ********************************************************************************
-# PRINCIPAL
-# ********************************************************************************
-# La función deberá convertir el titulo recibido en todas letras mayúsculas
-# """
-
 def generar_encabezado(titulo:str):
+    """
+    Genera un encabezado envuelto entre dos separadores.
+
+    Args:
+        titulo (str): Un string que representa el titulo
+    """    
     generar_separador("*",160,imprimir=True)
     print(titulo.upper())
     generar_separador("*",160,imprimir=True)
