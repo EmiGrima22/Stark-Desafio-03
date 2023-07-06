@@ -420,32 +420,13 @@ def generar_encabezado(titulo:str):
     print(titulo.upper())
     generar_separador("*",160,imprimir=True)
     
-
-# """
-# 5.4. Crear la función ‘imprimir_ficha_heroe’ la cual recibirá como parámetro:
-# ● heroe: un diccionario con los datos del héroe
-# La función deberá a partir los datos del héroe generar un string con el
-# siguiente formato e imprimirlo por pantalla::
-# ***************************************************************************************
-# PRINCIPAL
-# ***************************************************************************************
-# NOMBRE DEL HÉROE: Spider-Man (S.M.)
-# IDENTIDAD SECRETA: Peter Parker
-# CONSULTORA: Marvel Comics
-# CÓDIGO DE HÉROE : M-00000001
-# ***************************************************************************************
-# FISICO
-# ***************************************************************************************
-# ALTURA: 1,78 Mtrs.
-# PESO: 74,25 Kg.
-# FUERZA: 55 N
-# ***************************************************************************************
-# SEÑAS PARTICULARES
-# ***************************************************************************************
-# COLOR DE OJOS: Hazel
-# COLOR DE PELO: Brown
-# """
 def imprimir_ficha_heroe(heroe:dict)->None:
+    """
+    Muestra la ficha de un heroe con todos sus datos
+
+    Args:
+        heroe (dict): El diccionario del heroe
+    """    
     generar_encabezado("Principal")
     print(f"NOMBRE DEL HÉROE: {heroe['nombre']} ({heroe['iniciales']})\nIDENTIDAD SECRETA: {heroe['identidad']}\nCONSULTORA: {heroe['empresa']}\nCÓDIGO DE HÉROE: {heroe['codigo_heroe']}")
     generar_encabezado("Fisico")
@@ -453,26 +434,13 @@ def imprimir_ficha_heroe(heroe:dict)->None:
     generar_encabezado("Señas particulares")
     print(f"COLOR DE OJOS: {heroe['color_ojos']}\nCOLOR DE PELO: {heroe['color_pelo']}")
     
-
-# """ 
-# 5.5. Crear la función 'stark_navegar_fichas’ la cual recibirá como parámetros:
-# ● lista_heroes: la listas personajes
-# La función deberá comenzar imprimiendo la ficha del primer personaje de la
-# lista y luego solicitar al usuario que ingrese alguna de las siguientes opciones:
-# [ 1 ] Ir a la izquierda [ 2 ] Ir a la derecha [ S ] Salir
-# ● Si el usuario ingresa ‘1’: se debe mostrar el héroe que se encuentra en
-# la posición anterior en la lista (en caso de estar en el primero, ir al
-# último)
-# ● Si el usuario ingresa ‘2’: se debe mostrar el héroe que se encuentra en
-# la posición siguiente en la lista (en caso de estar en el último, ir al
-# primero)
-# ● Si ingresa ‘S’: volver al menú principal
-# ● Si ingresa cualquier otro valor, volver a mostrar las opciones hasta que
-# ingrese un valor válido
-# """
-
 def stark_navegar_fichas(lista_heroes:list, ):
+    """
+    Muestra la ficha de cada en heroe en pantalla, permitiendo desplazarse entre cada una
 
+    Args:
+        lista_heroes (list): La lista con los diccionarios de cada heroe
+    """    
     indice = 0
     imprimir_ficha_heroe(lista_heroes[0])
     while True:
@@ -499,36 +467,30 @@ def stark_navegar_fichas(lista_heroes:list, ):
                 break
     
 def imprimir_menu():
+    """
+    Muestra el menu de opciones en pantalla
+    """    
     print("\n------------------->    STARK MARVEL APP 3   <-------------------\n")
     print(" 1 -> Imprimir la lista de nombres junto con sus iniciales\n 2 -> Generar códigos de héroes\n 3 -> Normalizar Datos\n 4 -> Imprimir indices de nombres\n 5 -> Navegar fichas\n 6 -> Salir")
 
+def stark_menu_principal() -> str:
+    """
+    Muestra el menu y pide ingresar una opcion
 
-# """ 
-# 6.2. Crear la función ‘stark_menu_principal'. No recibe parámetros.
-# La función deberá imprimir el menú de opciones y le pedirá al usuario que
-# ingrese una.
-# La función deberá retornar la respuesta del usuario
-# """
-def stark_menu_principal():
-    
+    Returns:
+        str: La opcion ingresada
+    """    
     imprimir_menu()
     opcion = input("\nIngrese una opcion\n")
     return opcion
 
-
-# """ 
-# 6.3. Crear la función ‘stark_marvel_app_3’ la cual recibirá como parámetro:
-# ● lista_heroes: la lista de personajes
-# La función se encargará de la ejecución principal de nuestro programa.
-# Utilizar if/elif o match según prefiera (match solo para los que cuentan con
-# python 3.10+).
-# Debe informar por consola en caso de seleccionar una opción incorrecta y
-# volver a pedir el dato al usuario.
-# Reutilizar las funciones con prefijo 'stark_' donde crea correspondiente.
-# """
-
 def stark_marvel_app_3(lista_heroes:list):
-    
+    """
+    Se encarga de la ejecucion principal del programa
+
+    Args:
+        lista_heroes (list): La lista de diccionarios de los heroes
+    """    
     if len(lista_heroes) > 0:
         flag_datos = False
         flag_codigos = False
